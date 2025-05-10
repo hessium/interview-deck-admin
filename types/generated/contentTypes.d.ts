@@ -546,6 +546,8 @@ export interface ApiSectionSection extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    children: Schema.Attribute.Relation<'oneToMany', 'api::section.section'>;
+    content: Schema.Attribute.RichText;
     contentPath: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -556,8 +558,8 @@ export interface ApiSectionSection extends Struct.CollectionTypeSchema {
       'api::section.section'
     > &
       Schema.Attribute.Private;
+    parent: Schema.Attribute.Relation<'manyToOne', 'api::section.section'>;
     publishedAt: Schema.Attribute.DateTime;
-    sections: Schema.Attribute.Relation<'oneToMany', 'api::section.section'>;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;

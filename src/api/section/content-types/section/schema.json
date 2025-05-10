@@ -19,10 +19,20 @@
     "contentPath": {
       "type": "string"
     },
-    "sections": {
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::section.section",
+      "inversedBy": "children"
+    },
+    "children": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::section.section"
+      "target": "api::section.section",
+      "mappedBy": "parent"
+    },
+    "content": {
+      "type": "richtext"
     }
   }
 }
